@@ -1,0 +1,169 @@
+/* 
+   Global Stylesheet 
+   Imports Inter font and sets up custom properties for consistency.
+*/
+
+
+:root {
+    /* Color Palette extracted from Figma Designs */
+    --geo-dark-green: #153937;   /* The main background color */
+    --geo-accent-green: #D6E466; /* The 'Ground Check Data' text color */
+    --geo-white: #FFFFFF;        /* Header and Text */
+    --geo-footer-text: #9CA3AF;  /* Footer muted text */
+    --geo-button-text: #153937;  /* Button text color */
+}
+
+/* 
+   Base Resets & Font Setup 
+   Tailwind handles most normalization, but we enforce the font here.
+*/
+body {
+    font-family: 'Manrope';
+    background-color: var(--geo-dark-green);
+    color: var(--geo-white);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    /* Sticky footer setup */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 
+   Utility Classes for Custom Colors 
+   To be used alongside Tailwind classes
+*/
+
+.bg-geo-dark {
+    background-color: var(--geo-dark-green);
+}
+
+.text-geo-accent {
+    color: var(--geo-accent-green);
+}
+
+/* 
+   Header Styling 
+*/
+header {
+    background-color: var(--geo-white);
+    /* Ensures the header stays white while the rest is dark */
+}
+
+/* 
+   Map Container Styling (for map.html)
+   Leaflet/Map libraries require a defined height to render.
+*/
+#map-container {
+    width: 100%;
+    /* Calculates height: 100vh - (Header Height + Footer Height + Padding) 
+       Adjust 140px based on actual header/footer size */
+    height: calc(100vh - 140px); 
+    background-color: #e5e7eb; /* Placeholder gray while map loads */
+    z-index: 1;
+}
+
+/* 
+   Leaflet/Map specific z-index fixes to ensure navbar sits on top 
+*/
+.leaflet-container {
+    z-index: 1;
+}
+
+/* 
+   Main Content Layout (Landing Page)
+   Flex grow ensures the footer is pushed to the bottom.
+*/
+main {
+    flex-grow: 1;
+    position: relative;
+    overflow-x: hidden; /* Prevents scrollbar if bamboo image overflows */
+}
+
+/* 
+   Bamboo Illustration Positioning 
+   Handles the artistic image on the right side of the landing page.
+*/
+.bamboo-bg {
+    position: absolute;
+    right: 3%;
+    top: 43%;
+    transform: translateY(-50%);
+    height: 112%; /* Adjust based on image aspect ratio */
+    width: auto;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.9;
+    pointer-events: none; /* Allows clicking through the image if needed */
+}
+.legend {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px); 
+    padding: 12px;
+    line-height: 24px;
+    color: #1e293b;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    font-family: 'Manrope';
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.legend h4 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+}
+
+.legend div {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.legend i {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 1.5px solid #ffffff; /* White ring around the color dot */
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.1); /* Subtle outline */
+}
+.leaflet-popup-content {
+    font-family: 'Manrope';
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 12px; /* Smoother, Mac-like rounded corners */
+    padding: 3px;
+}
+
+.popup-img { 
+    width: 100%; 
+    max-width: 200px; 
+    border-radius: 12px; /* Rounded corners for the image too */
+    margin-top: 4px; 
+}
+
+/* Mobile responsiveness for the bamboo image */
+@media (max-width: 768px) {
+    .bamboo-bg {
+        position: relative;
+        top: 0;
+        transform: none;
+        height: auto;
+        width: 100%;
+        max-width: 400px;
+        margin-top: 2rem;
+        opacity: 0.4; /* Fade it out on mobile so text is readable */
+    }
+}
