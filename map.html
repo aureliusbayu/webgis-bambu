@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bamboo Data WebMap</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFFFFF',
+                        accent: '#C2E88D',
+                        'accent-hover': '#b0d67a',
+                    },
+                    fontFamily: {
+                        sans: ['Manrope'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-primary text-white font-sans antialiased h-screen flex flex-col overflow-hidden">
+
+    <!-- Compact Navigation -->
+    <header class="w-full h-16 bg-primary border-b border-white/5 flex items-center justify-between px-6 z-20 shadow-md flex-shrink-0">
+        
+        <div class="flex items-center">
+            <!-- Logo Placeholder -->
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="Geoaccess.png" alt="GeoAccess" class="h-8 md:h-10 w-auto object-contain">
+            </a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <div class="hidden md:flex items-center gap-2 text-sm font-ultralight text-white bg-[#153937] px-3 py-1.5 rounded-xl border border-[#153937]">
+                <a href="index.html" class="hover:text-white-700 transition-colors">Exit Map</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Map Container -->
+    <main class="flex-grow relative w-full h-full">
+        <!-- The Map Div -->
+        <div id="map" class="w-full h-full focus:outline-none"></div>
+    </main>
+
+    <!-- Scripts -->
+    <!-- 1. Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- 2. PapaParse JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <!-- 3. Custom Map Logic -->
+    <script src="js/map-logic.js"></script>
+</body>
+</html>
