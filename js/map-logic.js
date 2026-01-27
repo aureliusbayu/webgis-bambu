@@ -10,9 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------
     const map = L.map('map').setView(jogjaCenter, initialZoom);
 
-    L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; Stadia Maps, &copy; OpenMapTiles, &copy; OpenStreetMap contributors'
-        }).addTo(map);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+        subdomains: 'abcd',
+        maxZoom: 20
+    }).addTo(map);
 
     // 2. Fetch Data in the background
     function getColor(className) {
