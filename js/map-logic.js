@@ -11,10 +11,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const map = L.map('map').setView(jogjaCenter, initialZoom);
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 20
-}).addTo(map);
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+    }).addTo(map);
+
+    var slopeLayer = L.tileLayer('tiles/{z}/{x}/{y}.png', {
+        minZoom: 8,   // Match the min zoom you set in QGIS
+        maxZoom: 15,  // Match the max zoom you set in QGIS
+        opacity: 1, // Adjust transparency so you can see the map underneath
+        tms: false,   // Try setting to true if the tiles appear in the wrong place/upside down
+        attribution: 'Slope Data Export'
+    }).addTo(map);
 
     // 2. Fetch Data in the background
     function getColor(className) {
@@ -73,7 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const div = L.DomUtil.create('div', 'legend');
         
         // Header for the legend
-        div.innerHTML = '<h4>Legenda</h4>';
+        div.innerHTML = '<h4>Legenda</h4>'
+        ;
         
         // Define your classes and colors
         const items = [
@@ -95,4 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     legend.addTo(map);
+
+    var overlayMaps = {
+        "Slope": slopeLayer
+    };
+
+    // Add the control to the map
+    L.control.layers(null, overlayMaps, {
+        collapsed: false // Set to true if you want the menu to stay closed by default
+    }).addTo(map);
 });
