@@ -100,6 +100,7 @@ main {
     pointer-events: none; /* Allows clicking through the image if needed */
 }
 .legend {
+    width: 200px;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px); 
     padding: 12px;
@@ -153,6 +154,34 @@ main {
     border-radius: 12px; /* Rounded corners for the image too */
     margin-top: 4px; 
 }
+.leaflet-control-layers {
+    width: 200px;
+    background: rgba(255, 255, 255, 0.8) !important; /* Match your legend background */
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    padding: 8px 12px !important;
+    color: #1e293b !important;
+    border-radius: 12px !important; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+    font-family: 'Manrope' !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Style the text and checkboxes inside the control */
+.leaflet-control-layers-overlays label {
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Optional: Make the checkbox slightly more modern */
+.leaflet-control-layers-selector {
+    margin-right: 6px !important;
+    cursor: pointer;
+}
+
 
 /* Mobile responsiveness for the bamboo image */
 @media (max-width: 768px) {
