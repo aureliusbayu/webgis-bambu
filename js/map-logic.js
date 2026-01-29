@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4z6uYBc3K5jsgJjmVvAMRI0wi442FfRJwQXx9hhVjZpeDj0Fi_khDT8wjbN8Z0J9LhuwQM6vzIagN/pub?output=csv'; 
 
     const jogjaCenter = [-7.8256, 110.4595]; 
-    const initialZoom = 10.5; 
+    const initialZoom = 9.5; 
     // ---------------------
     const map = L.map('map').setView(jogjaCenter, initialZoom);
 
